@@ -17,6 +17,19 @@ inline fun Context.multiViewTypeAdapter(block: MultiViewTypeScope.() -> Unit): M
     }
 }
 
+inline fun <reified I : BaseItem, reified B : ViewDataBinding> Context.singleViewTypeAdapter(
+    block: ViewTypeScope<I, B>.() -> Unit
+): MultiViewTypeAdapter {
+    val viewTypeMapStore = MultiViewTypeScope(this).apply {
+        addType(ViewTypeScope(I::class.java, B::class.java).apply(block))
+    }.viewTypeMapStoreBuild()
+
+    return object : MultiViewTypeAdapter() {
+        override val viewTypeMapStore: ViewTypeMapStore
+            get() = viewTypeMapStore
+    }
+}
+
 inline fun <reified I : BaseItem, reified B : ViewDataBinding> MultiViewTypeScope.type(
     block: ViewTypeScope<I, B>.() -> Unit = {}
 ) {

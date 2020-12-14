@@ -75,9 +75,9 @@ class ChatActivity : AppCompatActivity() {
                 MyWords("key4", "2"),
                 OpponentWords("key5", "1"),
                 DateSection("2021.01.01"),
-                OpponentWords("key6", "happy new year"),
+                OpponentWords("key6", "Happy new year"),
                 OpponentWords("key7", "\uD83C\uDF8A"),
-                MyWords("key8", "You too \uD83C\uDF89\uD83C\uDF89")
+                MyWords("key8", "Happy new year \uD83C\uDF89\uD83C\uDF89")
             )
         )
     }

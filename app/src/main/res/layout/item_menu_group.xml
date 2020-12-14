@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+	
+	<data>
+		
+		<variable
+			name="item"
+			type="com.sabgil.multiviewtypeadapter.my.MyPageItem.MenuGroup" />
+	</data>
+	
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/menuContainer"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="?android:attr/selectableItemBackground"
+		android:clickable="true"
+		android:focusable="true">
+		
+		<TextView
+			android:id="@+id/userName"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/gray"
+			android:paddingStart="8dp"
+			android:paddingTop="4dp"
+			android:paddingEnd="8dp"
+			android:paddingBottom="4dp"
+			android:text="@{item.menuGroupName}"
+			android:textColor="@color/white"
+			android:textSize="12sp"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toTopOf="parent"
+			tools:text="menu name" />
+	
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

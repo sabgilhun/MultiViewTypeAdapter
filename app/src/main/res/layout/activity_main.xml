@@ -11,9 +11,20 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:text="Chatting Sample"
+		app:layout_constraintBottom_toTopOf="@id/startMyPageSample"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_chainStyle="packed" />
+	
+	<Button
+		android:id="@+id/startMyPageSample"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="MyPage Sample"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintTop_toBottomOf="@id/startChattingSample" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,7 +49,7 @@ class MyPageActivity : AppCompatActivity() {
                         menu?.let {
                             Toast.makeText(
                                 this@MyPageActivity,
-                                "Click Meunu" + it.menuName,
+                                "Click " + it.menuName,
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
@@ -61,7 +61,7 @@ class MyPageActivity : AppCompatActivity() {
                 }
             }
 
-            type<MenuGroup, ItemMenuGroupBinding>() {
+            type<MenuGroup, ItemMenuGroupBinding> {
                 onBind { item, binding ->
                     binding.item = item
                 }

@@ -112,3 +112,4 @@ android {
 ```
 
 ## License
+`MultiViewTypeAdapter` is under MIT License. ([detail](LICENSE))

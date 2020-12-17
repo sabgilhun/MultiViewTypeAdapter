@@ -1,43 +1,14 @@
 # MultiViewTypeAdapter
 
-`MultiViewTypeAdapter` is a library that makes it easy to configure  multi type adapters with DSL pattern. and use `DiffUtils` internally
-
-## Setup
-
-add JitPack repository to your project's `build.gradle` file
-```
-allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
-}
-```
-
-add `MultiViewTypeAdapter` dependency to your app module's `build.gradle` file
-```
-dependencies {
-    implementation ""
-}
-```
-
-you must use databinding, add following code to your app module's `build.gradle` file
-```
-android {
-
-    ...
-
-    dataBinding {
-        enabled = true
-    }
-}
-```
+**MultiViewTypeAdapter** provides an concise & intuitive syntax to configure multi-type adapters using DSL pattern.
+> **MultiViewTypeAdapter** is based on [DiffUtil](https://developer.android.com/reference/androidx/recyclerview/widget/DiffUtil)
 
 ## Usage
-### Step1: Define Item Classes
+
+### Step1: Defining Item Classes
 define items that will be each type in RecyclerView by extends `BaseItem`
 at this time, must specify id field of `BaseItem` with unique value.
-```
+```kotlin
 sealed class ChatRoomItem(key: Any) : BaseItem(key) {
 
     data class MyWords(val key: String, val content: String) : ChatRoomItem(key)
@@ -47,9 +18,10 @@ sealed class ChatRoomItem(key: Any) : BaseItem(key) {
     data class DateSection(val date: String) : ChatRoomItem(date)
 }
 ```
-### Step2: Create xml file for item using DataBinding
+
+### Step2: Creating xml for item using DataBinding
 create xml to be used in `MyWords` type
-```
+```xml
 <layout>
     <data>
         <variable
@@ -66,8 +38,8 @@ create xml to be used in `MyWords` type
 ```
 create another xml in a similar way as above (for `OpponentWords`, `DateSection`)
 
-### Step3: Setup adapter with items and bindings
-```
+### Step3: Setting up an adapter with items and bindings
+```kotlin
 adapter = multiViewTypeAdapter {
     type<MyWords, ItemMyWordsBinding> {
         onCreate {
@@ -89,8 +61,9 @@ adapter = multiViewTypeAdapter {
 
 recyclerView.adapter = adapter
 ```
-### Stpe4: Update adapter with list of multi type
-```
+
+### Stpe4: Updating adapter using a list of multi type
+```kotlin
 adapter.update(
     listOf(
         DateSection("2020.12.31"),
@@ -105,6 +78,37 @@ adapter.update(
         MyWords("key8", "Happy new year \uD83C\uDF89\uD83C\uDF89")
     )
 )
+```
+
+## Installation
+
+Add JitPack repository in your `build.gradle`:
+```gradle
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+```
+
+Specify **MultiViewTypeAdapter** in your `build.gradle` for app module:
+```gradle
+dependencies {
+    implementation ""
+}
+```
+
+To use MultiViewTypeAdapter, you must use databinding. Add following in your `build.gradle` for app module:
+```gradle
+android {
+
+    ...
+
+    dataBinding {
+        enabled = true
+    }
+}
 ```
 
 ## License

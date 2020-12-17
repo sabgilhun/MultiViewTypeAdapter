@@ -80,8 +80,11 @@ adapter.update(
 )
 ```
 
-## Installation
+## Sample
+Three tpye (`MyWords`, `OpponentWords`, `DateSection`)  
+<img src="image/chat_room_sample_image.png" width="40%" height="30%" title="" alt="chat room sample"></img><br>
 
+## Installation
 Add JitPack repository in your `build.gradle`:
 ```gradle
 allprojects {

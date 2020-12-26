@@ -1,0 +1,16 @@
+ext {
+    libraryName = 'mutiviewtype'
+
+    groupName = 'com.sabgil.mutiviewtype'
+    libraryVersionName = '1.0.2'
+
+    artifactId = 'mutiviewtype'
+
+    repoName = 'android'
+    packageName = 'mutiviewtype'
+
+    packageDesc = 'MultiViewTypeAdapter provides an concise & intuitive syntax to configure multi-type adapters using DSL pattern.'
+
+    sourceUrl = 'https://github.com/sabgilhun/MultiViewTypeAdapter.git'
+    githubUrl = 'https://github.com/sabgilhun/MultiViewTypeAdapter'
+}

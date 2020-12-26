@@ -1,0 +1,73 @@
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+group = rootProject.ext.groupName
+version = rootProject.ext.libraryVersionName
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier = 'sources'
+}
+
+publishing {
+    publications {
+        Production(MavenPublication) {
+
+            artifact "$buildDir/outputs/aar/core-release.aar"
+            artifact sourcesJar
+
+            groupId rootProject.ext.groupName
+            artifactId rootProject.ext.artifactId
+            version rootProject.ext.libraryVersionName
+
+            pom {
+                name = libraryName
+                description = rootProject.ext.packageDesc
+                url = rootProject.ext.githubUrl
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'sabgilhun'
+                        name = 'Yong Hun Kim'
+                        email = 'sabgilhun@gamil.com'
+                    }
+                }
+                scm {
+                    connection = rootProject.ext.sourceUrl
+                    developerConnection = rootProject.ext.sourceUrl
+                    url = rootProject.ext.githubUrl
+                }
+            }
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+
+    dryRun = false
+    override = false
+    publish = true
+
+    pkg {
+        repo = rootProject.ext.repoName
+        name = rootProject.ext.packageName
+        userOrg = user
+        licenses = ['MIT']
+        desc = rootProject.ext.packageDesc
+        vcsUrl = rootProject.ext.sourceUrl
+
+        version {
+            name = rootProject.ext.libraryVersionName
+            vcsTag = rootProject.ext.libraryVersionName
+        }
+    }
+
+    publications = ['Production']
+}

@@ -98,7 +98,7 @@ allprojects {
 Specify **MultiViewTypeAdapter** in your `build.gradle` for app module:
 ```gradle
 dependencies {
-    implementation ""
+    implementation "com.sabgil.mutiviewtype:mutiviewtype:1.0.2"
 }
 ```
 
